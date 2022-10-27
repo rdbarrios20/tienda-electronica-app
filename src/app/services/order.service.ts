@@ -30,7 +30,7 @@ export class OrderService {
   }
   getOrdersByDate2(event: any) {
     const data = this.httpClient
-      .get(this.UrlApi + '/get-orders-date/' + event)
+      .get(this.UrlApi + '/get-orders-date/' + event, { responseType: 'json' })
       .pipe(
         map((response) => {
           return response;

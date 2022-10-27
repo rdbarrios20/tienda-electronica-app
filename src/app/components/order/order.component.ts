@@ -25,6 +25,7 @@ export class OrderComponent implements OnInit {
     });
   }
   getOrdersByDate($event: any) {
+    this.orderList = [];
     const date = $event.target.value;
     this.orderService.getOrdersByDate2(date).subscribe((data: any) => {
       if (data) {

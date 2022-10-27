@@ -10,33 +10,6 @@
       <div class="col">
       </div>
     </div>
-    <div class="row">
-      <div *ngIf="showModal == true">
-        <div class="modal-body">
-          <table class="table" style="margin-top: 25px;">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Fecha_pedido</th>
-                <th scope="col">Fecha_entrega</th>
-                <th scope="col">Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of productList">
-                <td> {{ item.id }}</td>
-                <td> {{ item.name }}</td>
-                <td> {{ item.fecha_pedido }}</td>
-                <td> {{ item.fecha_entrega }}</td>
-                <td><button type="button" class="btn btn-primary" (click)="showProducts(item.id)">Ver productos</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
   </div>
   <table class="table" style="margin-top: 25px;">
     <thead>
@@ -54,8 +27,49 @@
         <td> {{ item.name }}</td>
         <td> {{ item.fecha_pedido }}</td>
         <td> {{ item.fecha_entrega }}</td>
-        <td><button type="button" class="btn btn-primary" (click)="showProducts(item.id)">Ver productos</button></td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            (click)="showProducts(item.id)">Ver productos</button></td>
       </tr>
     </tbody>
   </table>
+</div>
+<!-- Modal -->
+<div class="modal modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Productos del pedido</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha pedido</th>
+              <th scope="col">Fecha Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of productList">
+              <td> {{ item.id }}</td>
+              <td> {{ item.nombre }}</td>
+              <td> {{ item.marca }}</td>
+              <td> {{ item.descripcion }}</td>
+              <td> {{ item.cantidad_disponible }}</td>
+              <td> {{ item.cantidad_solicitada }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+      </div>
+    </div>
+  </div>
 </div>

@@ -38,7 +38,7 @@ export class OrderComponent implements OnInit {
     this.showModal = true;
     this.orderService.getProductsById(id).subscribe((data: any) => {
       if (data) {
-        this.productList = data.orders;
+        this.productList = data;
       }
     });
   }

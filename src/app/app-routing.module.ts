@@ -4,7 +4,7 @@ import { UserComponent } from './components/user/user.component';
 import { OrderComponent } from './components/order/order.component';
 
 const routes: Routes = [
-  { path: 'users', component: UserComponent },
+  { path: 'providers', component: UserComponent },
   { path: 'orders', component: OrderComponent },
 ];
 

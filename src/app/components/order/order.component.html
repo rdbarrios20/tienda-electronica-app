@@ -3,28 +3,58 @@
     <div class="row">
       <div class="col">
         <div class="mb-1">
-          <label for="date" class="form-label">Filtrar por fecha pedido</label>
-          <input type="date" class="form-control" id="date">
+          <label for="date" class="form-label">Filtrar por fecha de pedido</label>
+          <input type="date" class="form-control" (change)="getOrdersByDate($event)">
         </div>
       </div>
-      <div class="col"></div>
+      <div class="col">
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="showModal == true">
+        <div class="modal-body">
+          <table class="table" style="margin-top: 25px;">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha_pedido</th>
+                <th scope="col">Fecha_entrega</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of productList">
+                <td> {{ item.id }}</td>
+                <td> {{ item.name }}</td>
+                <td> {{ item.fecha_pedido }}</td>
+                <td> {{ item.fecha_entrega }}</td>
+                <td><button type="button" class="btn btn-primary" (click)="showProducts(item.id)">Ver productos</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <table class="table" style="margin-top: 25px;">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha_pedido</th>
+        <th scope="col">Fecha_entrega</th>
+        <th scope="col">Opciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let item of orderList">
+        <td> {{ item.id }}</td>
+        <td> {{ item.name }}</td>
+        <td> {{ item.fecha_pedido }}</td>
+        <td> {{ item.fecha_entrega }}</td>
+        <td><button type="button" class="btn btn-primary" (click)="showProducts(item.id)">Ver productos</button></td>
       </tr>
     </tbody>
   </table>
